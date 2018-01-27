@@ -62,22 +62,22 @@ window.addEventListener('load', () => {
     }
   }
 
-  cvv.addEventListener('input', function () {
-    var cvv3 = cvv.value.length;
-    if (cvv3 !== 3) {
-      submit.disabled = true;
-    } else {
-      submit.disabled = false;
-    }
+  cvv.addEventListener('input', () => {
+    cvv.value = cvv.value.replace(/[^0-9]/g, '');
+    if (cvv.value && cvv.value.length === 3) validateCvv = true;
+    else validateCvv = false;
   });
 
   // Validar Nombre con mínimo 5 caracteres
-  name.addEventListener('input', function () {
-    var nameval = name.value.length;
-    if (nameval < 5) {
-      submit.disabled = true;
-    } else {
+  name.addEventListener('input', () => {
+    name.value = name.value.replace(/^[a-zA-Z\s]*$/);
+    if (name.value && name.value.length > 5) {
+      validateName = true;
       submit.disabled = false;
+    }
+    else {
+      validateName = false;
+      submit.disabled = true;
     }
   });
 });
