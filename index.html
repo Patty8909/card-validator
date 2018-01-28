@@ -1,40 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
   <link rel="stylesheet" href="vendors/bootstrap-3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/main.css">
 </head>
+
 <body>
-  <div class="container">
-    <form>
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">CardValidator</a>
+      </div>
+    </div>
+  </nav>  
+  <div class="container main">
+    <div class="row">
+      <div>
+        <h1 class="text-center">CardValidator es una libreria JS</h1>
+        <h2 class="text-center">Comprueba si tarjeta de crédito es válida</h2>
+      </div>
+      <br>
+      <!-- Formulario test -->
+      <form class="col-xs-offset-4 col-xs-4">
         <div class="form-group">
-          <label for="cn" class="control-label">Número de tarjeta</label>
+          <label for="cn" class="control-label sr-only">Número de tarjeta</label>
           <div class="">
-            <input id="cn" name="cn" maxlength="16" placeholder="Ingrese 16 números" class="form-control"/>
+            <input id="cn" name="cn" maxlength="16" placeholder="Número de tarjeta" class="form-control" />
           </div>
         </div>
         <div class="form-group">
-          <label for="exp" class="">Fecha de vencimiento</label>
+          <label for="exp" class="control-label sr-only">Fecha de vencimiento</label>
           <div>
-            <input id="exp" type="date" name="exp" />
+            <input id="exp" type="date" name="exp" placeholder="Fecha de vencimiento" class="form-control" />
           </div>
         </div>
         <div class="form-group">
-          <label for="cvv">CVV</label>
-          <input id="cvv" name="cvv" type="number" />
-          <p class="">(últimos 03 dígitos al reverso)</p>
+          <label for="cvv" class="control-label sr-only">CVV</label>
+          <input id="cvv" name="cvv" type="number" placeholder="CVV" class="form-control" />
+          <p class="help-block">(últimos 03 dígitos al reverso)</p>
         </div>
         <div class="form-group">
-          <label for="name">Nombre completo</label>
-          <input id="name" name="name" type="text" />
+          <label for="name" class="control-label sr-only">Nombre completo</label>
+          <input id="name" name="name" type="text" placeholder="Nombre completo" class="form-control"/>
         </div>
         <input id="submit" type="submit" value="Pagar" class="btn btn-primary" disabled/>
       </form>
+    </div>
   </div>
-  <script src="src/library.js"></script>
+  <script src="src/cardValidator.js"></script>
   <script src="vendors/js/jquery-3.2.1.min.js"></script>
 </body>
+
 </html>
