@@ -54,3 +54,12 @@ form.addEventListener('submit', (e) => {
 A la hora de hacer las validaciones, la librería debería de añadir la clase
 `.error` a los `<input>`s que no pasen la validación, o la clase `.success`
 en caso de que sí pase.
+
+## Implementación de libreria
+
+#### Sketch
+![Sketch](assets/img/sketch.png)
+## Herramientas
+- Html 5
+- ECMAScript 6
+- Bootstrap 3
