@@ -4,7 +4,7 @@
   "description": "* **Track:** _Common Core_\r * **Curso:** _JS Deep Dive: Crea tu propia librería usando JavaScript_\r * **Unidad:** _Producto final_",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "babel src -d dist"
   },
   "repository": {
     "type": "git",
@@ -16,9 +16,6 @@
     "url": "https://github.com/Patty8909/card-validator/issues"
   },
   "homepage": "https://github.com/Patty8909/card-validator#readme",
-  "dependencies": {
-    "bootstrap": "^4.0.0"
-  },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.6.1"

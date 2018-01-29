@@ -63,3 +63,29 @@ en caso de que sí pase.
 - Html 5
 - ECMAScript 6
 - Bootstrap 3
+
+## Descripción
+
+CardValidator es una librería Javascript que permite validar datos importantes de las tarjetas de crédito, como el número, código de verificación, fecha de vencimiento y nombre completo.
+
+#### Validar número de tarjeta de crédito.
+
++ Valida mediante algoritmo de Luhn.
++ Longitud de dígitos igual a 16.
++ Valida sólo el ingreso de números.
+
+#### Validar fecha de vencimiento de la tarjeta.
+
++ Valida fechas futuras.
++ Valida sólo el ingreso de números.
+
+#### Validar código de verificación.
+
++ Longitud del cvv igual a tres dígitos.
++ Valida sólo el ingreso de números.
+
+#### Validar el nombre completo.
+
++ Longitud mínima del nombre.
++ Valida sólo el ingreso de letras.
+

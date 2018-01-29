@@ -10,6 +10,8 @@ window.addEventListener('load', () => {
   let validateCvv = false;
   let validateName = false;
 
+  /*** Validaciones por cada elemento de formulario ***/
+
   numCard.addEventListener('input', () => {
     numCard.value = numCard.value.replace(/[^0-9]/g, '');
     if (numCard.value) validatenumCard = true;
@@ -33,8 +35,9 @@ window.addEventListener('load', () => {
   });
 
   /* Función para validar número de tarjeta */
-  function validateCardDetails(cardNumber) {
+  const validateCardDetails = (cardNumber) => {
     let array = [];
+
     let size = cardNumber.length;
     let digit;
     let result = 0;
