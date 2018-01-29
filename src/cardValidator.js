@@ -20,7 +20,7 @@ window.addEventListener('load', () => {
     if (exp.value) validateExp = true;
     else validateExp = false;
   });
-  
+
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     validateCardDetails(numCard.value);
@@ -61,7 +61,7 @@ window.addEventListener('load', () => {
       return alert('Tarjeta inválida');
     }
   }
-
+  
   cvv.addEventListener('input', () => {
     cvv.value = cvv.value.replace(/[^0-9]/g, '');
     if (cvv.value && cvv.value.length === 3) validateCvv = true;
