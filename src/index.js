@@ -25,7 +25,11 @@ window.addEventListener('load', () => {
     if (numCard.value) {
       validatenumCard = true;
       activeButton();
-    } else desactiveButton();
+      numCard.setAttribute('class', 'success');
+    } else {
+      desactiveButton();
+      numCard.setAttribute('class', 'error');
+    }
   });
   
   form.addEventListener('submit', (e) => {
@@ -70,31 +74,48 @@ window.addEventListener('load', () => {
     }
   };
 
+  // Validar año de expiración long 4, sólo num, máx 5 años posteriores
   year.addEventListener('input', () => {
-    var date = new Date;
+    const date = new Date;
     console.log(date.getFullYear());
-    var thisYear = date.getFullYear();
-    if (year.value >= thisYear && year.value.length === 4) {
+    year.value = year.value.replace(expNum, '');
+    let thisYear = date.getFullYear();
+    if (year.value >= thisYear && year.value <= thisYear + 5 && year.value.length === 4) {
       validateYear = true;
       activeButton();
-    } else desactiveButton();
+      year.setAttribute('class', 'success');
+    } else {
+      desactiveButton();
+      year.setAttribute('class', 'error');
+    }
   });
 
+  // Validar mes de expiración long 2, sólo num
   month.addEventListener('input', () => {
+    month.value = month.value.replace(expNum, '');
     console.log(month.value);
     if (month.value > 0 && month.value < 13 && month.value.length === 2 && validateYear) {
+      validateMonth = true;
       activeButton();
-    } else desactiveButton();
+      month.setAttribute('class', 'success');
+    } else {
+      desactiveButton();
+      month.setAttribute('class', 'error');
+    }
   });
 
-  
+  // Validar cód de verificación sólo num y long 3 
   cvv.addEventListener('input', () => {
     cvv.value = cvv.value.replace(expNum, '');
     console.log(cvv.value);
     if (cvv.value && cvv.value.length === 3) {
       validateCvv = true;
       activeButton();
-    } else desactiveButton();
+      cvv.setAttribute('class', 'success');
+    } else {
+      desactiveButton();
+      cvv.setAttribute('class', 'error');
+    }
   });
   
   // Validar Nombre con mínimo 5 caracteres
@@ -103,12 +124,16 @@ window.addEventListener('load', () => {
     if (name.value && name.value.length > 5) {
       validateName = true;
       activeButton();
-    } else desactiveButton();
+      name.setAttribute('class', 'success');
+    } else {
+      desactiveButton();
+      name.setAttribute('class', 'error');
+    }
   });
   
   /* Validar para habilitar boton */
-  function activeButton() {
-    if (validateYear && validateCvv && validateName && validatenumCard) {
+  const activeButton = () => {
+    if (validateYear && validateCvv && validateName && validatenumCard && validateMonth) {
       button.disabled = false;
     };
   };
