@@ -3,24 +3,25 @@ window.addEventListener('load', () => {
   let numCard = document.getElementById('cn');
   let exp = document.getElementById('exp');
   let cvv = document.getElementById('cvv');
-  let submit = document.getElementById('submit');
+  let button = document.querySelector('input[type="submit"]');
   let name = document.getElementById('name');
+
+  const expNum = /[^0-9]/g;
+  const expLet = /[^a-zA-ZÑñáéíóúÁÉÍÓÚ\s]*$/g;
+
   let validatenumCard = false;
   let validateExp = false;
   let validateCvv = false;
   let validateName = false;
 
-  /*** Validaciones por cada elemento de formulario ***/
+  /** Validaciones por cada elemento de formulario **/
 
   numCard.addEventListener('input', () => {
-    numCard.value = numCard.value.replace(/[^0-9]/g, '');
-    if (numCard.value) validatenumCard = true;
-    else validatenumCard = false;
-  });
-
-  exp.addEventListener('input', () => {
-    if (exp.value) validateExp = true;
-    else validateExp = false;
+    numCard.value = numCard.value.replace(expNum, '');
+    if (numCard.value) {
+      validatenumCard = true;
+      activeButton();
+    } else desactiveButton();
   });
 
   form.addEventListener('submit', (e) => {
@@ -64,23 +65,38 @@ window.addEventListener('load', () => {
       return alert('Tarjeta inválida');
     }
   }
-  
+
+  exp.addEventListener('input', () => {
+    if (exp.value) {
+      validateExp = true;
+      activeButton();
+    } else desactiveButton();
+  });
+
   cvv.addEventListener('input', () => {
-    cvv.value = cvv.value.replace(/[^0-9]/g, '');
-    if (cvv.value && cvv.value.length === 3) validateCvv = true;
-    else validateCvv = false;
+    cvv.value = cvv.value.replace(expNum, '');
+    if (cvv.value && cvv.value.length === 3) {
+      validateCvv = true;
+      activeButton();
+    } else desactiveButton();
   });
 
   // Validar Nombre con mínimo 5 caracteres
   name.addEventListener('input', () => {
-    name.value = name.value.replace(/^[a-zA-Z\s]*$/);
+    name.value = name.value.replace(expLet, '');
     if (name.value && name.value.length > 5) {
       validateName = true;
-      submit.disabled = false;
-    }
-    else {
-      validateName = false;
-      submit.disabled = true;
-    }
+      activeButton();
+    } else desactiveButton();
   });
+
+  /* Validar para habilitar boton */
+  const activeButton = () => {
+    if (validatenumCard && validateExp && validateCvv && validateName)
+      button.disabled = false;
+  }
+  
+  const desactiveButton = () => {
+    button.disabled = true;
+  }
 });
