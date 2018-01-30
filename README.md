@@ -57,8 +57,10 @@ en caso de que sí pase.
 
 ## Implementación de libreria
 
-#### Sketch
-![Sketch](assets/img/sketch.png)
+### Sketch
+
+![](public/assets/img/sketch.png)
+
 ## Herramientas
 - Html 5
 - ECMAScript 6
