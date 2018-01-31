@@ -51,28 +51,23 @@ form.addEventListener('submit', (e) => {
 });
 ```
 
-A la hora de hacer las validaciones, la librería debería de añadir la clase
-`.error` a los `<input>`s que no pasen la validación, o la clase `.success`
-en caso de que sí pase.
-
 ## Implementación de libreria
 
-### Sketch
+#### Sketch
+
+Se realizó un primer sketch de la librería en vista desktop.
 
 ![](public/assets/img/sketch.png)
 
-## Herramientas
-- Html 5
-- ECMAScript 6
-- Bootstrap 3
-
 ## Descripción
 
-CardValidator es una librería Javascript que permite validar datos importantes de las tarjetas de crédito, como el número, código de verificación, fecha de vencimiento y nombre completo.
+CardValidator es una librería Javascript que permite validar datos importantes de las tarjetas de crédito, como el número, código de verificación, fecha de vencimiento y nombre completo. Cuando todos los `<input>` del formulario son válidos, activa el botón de Pagar.
+
+Además añade la clase `.error` a los `<input>`s que no pasen la validación, o la clase `.success` en caso de que sí pase.
 
 #### Validar número de tarjeta de crédito.
 
-+ Valida mediante algoritmo de Luhn.
++ Valida el número de la tarjeta mediante el algoritmo de Luhn.
 + Longitud de dígitos igual a 16.
 + Valida sólo el ingreso de números.
 
@@ -88,6 +83,24 @@ CardValidator es una librería Javascript que permite validar datos importantes 
 
 #### Validar el nombre completo.
 
-+ Longitud mínima del nombre.
++ Longitud mínima del nombre 5 caracteres.
 + Valida sólo el ingreso de letras.
 
+### Especificaciones
+
+CardValidator permite validar tarjetas de crédito con las siguientes características:
+
++ Número de tarjeta de crédito: longitud de 16 dígitos.
++ Mes de expiración de la tarjeta: longitud de dos dígitos, se debe ingresar un número del 01 al 12 según los meses calendarios Enero a Diciembre.  
++ Año de expiración de la tarjeta: longitud de cuatro dígitos, se debe ingresar el año en números.
++ Código de verificación: longitud de 3 dígitos, en números.
++ Nombre completo: longitud mínima de 5 caracteres.
+
+## Herramientas
+
+`babel` `ecmascript 6` `html5` `bootstrap 3`
+
+## Créditos
+
++ Lidia Ramirez.
++ Patricia Urco.
