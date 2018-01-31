@@ -14,3 +14,6 @@ body {
 .form-style {
    margin-top: 3%;
 }
+.form-control > input {
+   border-style: none;
+}

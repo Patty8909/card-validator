@@ -36,8 +36,8 @@
       <form class="col-md-6 form-style">
         <div class="form-group">
           <label for="cn" class="control-label sr-only">Número de tarjeta</label>
-          <div class="">
-            <input id="cn" name="cn" maxlength="16" placeholder="Número de tarjeta" class="form-control" />
+          <div class="form-control">
+            <input id="cn" name="cn" maxlength="16" placeholder="Número de tarjeta" />
           </div>
         </div>
         <!--<div class="form-group">
@@ -48,24 +48,28 @@
         </div>-->
         <div class="form-group">
           <label for="month" class="control-label sr-only">Mes de expiración</label>
-          <div>
-            <input id="month" type="text" name="exp" placeholder="Mes" class="form-control" />
+          <div class="form-control">
+            <input id="month" type="text" name="exp" placeholder="Mes" />
           </div>
         </div>
         <div class="form-group">
           <label for="year" class="control-label sr-only">Año de expiración</label>
-          <div>
-            <input id="year" type="text" name="exp" placeholder="Año" class="form-control" />
+          <div class="form-control">
+            <input id="year" type="text" name="exp" placeholder="Año" />
           </div>
         </div>
         <div class="form-group">
           <label for="cvv" class="control-label sr-only">CVV</label>
-          <input id="cvv" name="cvv" type="text" placeholder="CVV" class="form-control" />
+          <div class="form-control">
+          <input id="cvv" name="cvv" type="text" placeholder="CVV" />
+          </div>
           <p class="help-block">(últimos 03 dígitos al reverso)</p>
         </div>
         <div class="form-group">
           <label for="name" class="control-label sr-only">Nombre completo</label>
-          <input id="name" name="name" type="text" placeholder="Nombre completo" class="form-control"/>
+          <div class="form-control">
+          <input id="name" name="name" type="text" placeholder="Nombre completo"/>
+          </div>
         </div>
         <input id="submit" type="submit" value="Pagar" class="btn btn-primary" disabled/>
       </form>
