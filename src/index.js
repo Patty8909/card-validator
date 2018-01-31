@@ -1,12 +1,4 @@
 window.addEventListener('load', () => {
-  const form = document.querySelector('form');
-  let numCard = document.getElementById('cn');
-  let exp = document.getElementById('exp');
-  let month = document.getElementById('month');
-  let year = document.getElementById('year');
-  let cvv = document.getElementById('cvv');
-  let button = document.querySelector('input[type="submit"]');
-  let name = document.getElementById('name');
   
   const expNum = /[^0-9]/g;
   const expLet = /[^a-zA-ZÑñáéíóúÁÉÍÓÚ\s]*$/g;
@@ -18,31 +10,10 @@ window.addEventListener('load', () => {
   let validateCvv = false;
   let validateName = false;
   
-  /** Validaciones por cada elemento de formulario **/
-  
-  numCard.addEventListener('input', () => {
-    numCard.value = numCard.value.replace(expNum, '');
-    if (numCard.value) {
-      validatenumCard = true;
-      activeButton();
-      numCard.setAttribute('class', 'success');
-    } else {
-      desactiveButton();
-      numCard.setAttribute('class', 'error');
-    }
-  });
-  
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    validateCardDetails(numCard.value);
-    /*
-      if (validateCardDetails(form)) {
-        console.log('datos válido... enviar...');
-      } else {
-        console.log('datos inválidos');
-      } */
-  });
-  
+  /** Validaciones de cantidad de  **/
+  function validateCount(count) {
+  };
+
   /* Función para validar número de tarjeta */
   const validateCardDetails = (cardNumber) => {
     let array = [];
@@ -73,6 +44,41 @@ window.addEventListener('load', () => {
       return alert('Tarjeta inválida');
     }
   };
+
+   /*  */
+  const completeInput = (input) => {
+    let numCardValue = input.value;
+    numCardValue = numCardValue.replace(expNum, '');
+    if (numCardValue.length === 16) {
+      validatenumCard = true;
+      activeButton();
+    } else desactiveButton();
+  };
+
+  numCard.addEventListener('input', () => {
+    numCard.value = numCard.value.replace(expNum, '');
+    if (numCard.value) {
+      validatenumCard = true;
+      activeButton();
+      numCard.setAttribute('class', 'success');
+    } else {
+      desactiveButton();
+      numCard.setAttribute('class', 'error');
+    }
+  });
+  
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    validateCardDetails(numCard.value);
+    /*
+      if (validateCardDetails(form)) {
+        console.log('datos válido... enviar...');
+      } else {
+        console.log('datos inválidos');
+      } */
+  });
+  
+  
 
   // Validar año de expiración long 4, sólo num, máx 5 años posteriores
   year.addEventListener('input', () => {
