@@ -1,15 +1,15 @@
 window.addEventListener('load', () => {
-  
+
   const expNum = /[^0-9]/g;
   const expLet = /[^a-zA-ZÑñáéíóúÁÉÍÓÚ\s]*$/g;
-  
+
   let validatenumCard = false;
   let validateExp = false;
   let validateYear = false;
   let validateMonth = false;
   let validateCvv = false;
   let validateName = false;
-  
+
   /** Validaciones de cantidad de  **/
   function validateCount(count) {
   };
@@ -17,7 +17,7 @@ window.addEventListener('load', () => {
   /* Función para validar número de tarjeta */
   const validateCardDetails = (cardNumber) => {
     let array = [];
-  
+
     let size = cardNumber.length;
     let digit;
     let result = 0;
@@ -45,7 +45,7 @@ window.addEventListener('load', () => {
     }
   };
 
-   /*  */
+  /*  */
   const completeInput = (input) => {
     let numCardValue = input.value;
     numCardValue = numCardValue.replace(expNum, '');
@@ -66,7 +66,7 @@ window.addEventListener('load', () => {
       numCard.setAttribute('class', 'error');
     }
   });
-  
+
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     validateCardDetails(numCard.value);
@@ -77,8 +77,8 @@ window.addEventListener('load', () => {
         console.log('datos inválidos');
       } */
   });
-  
-  
+
+
 
   // Validar año de expiración long 4, sólo num, máx 5 años posteriores
   year.addEventListener('input', () => {
@@ -123,7 +123,7 @@ window.addEventListener('load', () => {
       cvv.setAttribute('class', 'error');
     }
   });
-  
+
   // Validar Nombre con mínimo 5 caracteres
   name.addEventListener('input', () => {
     name.value = name.value.replace(expLet, '');
@@ -136,16 +136,15 @@ window.addEventListener('load', () => {
       name.setAttribute('class', 'error');
     }
   });
-  
+
   /* Validar para habilitar boton */
   const activeButton = () => {
     if (validateYear && validateCvv && validateName && validatenumCard && validateMonth) {
       button.disabled = false;
     };
   };
-    
+
   const desactiveButton = () => {
     button.disabled = true;
   };
 });
-  
