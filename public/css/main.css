@@ -17,3 +17,15 @@ body {
 .form-control > input {
    border-style: none;
 }
+/*---------------forma de uso-------*/
+.text-align {
+    text-align: center;
+}
+.style-footer {
+    background-color: #F8F8F8;
+    border: 1px solid #E7E7E7;
+    height: 70px;
+}
+.margin {
+    margin-top: 2%;
+}

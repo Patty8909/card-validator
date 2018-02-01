@@ -77,10 +77,110 @@
       </form>
     </div>
   </div>
-  <section>
+  <section class="">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12 text-align">
+         <h2>Descripción</h2>
+        </div>
+      </div>
+      <br>
 
+      <div class="row">
+        <div class="col-sm-6 col-md-3">
+          <div class="thumbnail">
+            <div class="caption">
+              <h3>Número de tarjeta</h3>
+              <p>Valida mediante el algoritmo de Luhn tarjetas de 16 números.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <div class="thumbnail">
+            <div class="caption">
+              <h3>Fecha de vencimiento</h3>
+              <p>Valida años futuros a partir de la fecha actual con máximo 5 años posteriores.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <div class="thumbnail">
+            <div class="caption">
+              <h3>Código de verificación</h3>
+              <p>Valida cvv de tres dígitos.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <div class="thumbnail">
+            <div class="caption">
+              <h3>Nombre completo</h3>
+              <p>Valida un mínimo de cinco caracteres, sólo letras.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
-  
+  <br>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 text-align">
+        <h2>Forma de uso</h2>
+      </div>
+    </div>
+  </div>
+  <br>
+  <section class="container">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Número de tarjeta</h3>
+      </div>
+      <div class="panel-body">
+         let validateCardDetails = (cardNumber)
+      </div>
+    </div>
+  </section>
+  <section class="container">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Fecha de vencimiento</h3>
+      </div>
+      <div class="panel-body">
+           let validateDateExpiration = (dateExp)
+      </div>
+    </div>
+  </section>
+  <section class="container">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Código de verificación</h3>
+      </div>
+      <div class="panel-body">
+           let validateCVV = (cvv)
+      </div>
+    </div>
+  </section>
+  <section class="container">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Nombre completo</h3>
+      </div>
+      <div class="panel-body">
+            let validateName = (name)
+      </div>
+    </div>
+  </section>
+
+  <footer class="style-footer">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12 text-align margin">
+          <p>&copy; CardValidator is freely distributable under the terms of the MIT license.</p>
+        </div>
+      </div>
+    </div>
+  </footer>  
   <script src="vendors/js/jquery-3.2.1.min.js"></script>
   <script src="../src/data.js"></script>
   <script src="../src/cardValidator.js"></script>
