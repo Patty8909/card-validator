@@ -83,7 +83,7 @@ letValidateDateYear = (year) => {
   year.value = year.value.replace(expNum, '');
   let thisYear = date.getFullYear();
   if (year.value >= thisYear && year.value <= thisYear + 5 && year.value.length === 4) {
-    validateYear = true;
+    tempYear = true;
     year.setAttribute('class', 'success');
   } else {
     year.setAttribute('class', 'error');
@@ -91,13 +91,15 @@ letValidateDateYear = (year) => {
 };
 
 letValidateDateMoth = (moth) => {
+  
   month.value = month.value.replace(expNum, '');
-  if (month.value > 0 && month.value < 13 && month.value.length === 2 && validateYear) {
-    validateMonth = true;
+  if (month.value > 0 && month.value < 13 && month.value.length === 2 && tempYear) {
+    tempMonth = true;
     month.setAttribute('class', 'success');
   } else {
     month.setAttribute('class', 'error');
   }
+  
 };
 
 /* Función validaciones CVV */
@@ -128,12 +130,12 @@ let validateName = (name) => {
 /* Validar para habilitar boton */
 let activeButton = () => {
   if (tempnumCard && tempCvv && tempName) {
-    button.disabled = false;
+    // button.disabled = false;
   };
 };
 /* Validar para no habilitar boton */
 let desactiveButton = () => {
-  button.disabled = true;
+  // button.disabled = true;
 };
 
 let validateData = (numCard, cvv, name) => {
@@ -142,8 +144,10 @@ let validateData = (numCard, cvv, name) => {
   nameValue = name.value;
   let valdUser = data.filter((user) => user.number === numCardValue);
   if (valdUser.length) {
-    if (valdUser[0].cvv === cvv && valdUser[0].name === name) {
+    if (valdUser[0].cvv === cvvValue && valdUser[0].name === nameValue) {
       alert('Tarjeta Valida y usuario correcto');
-    } else alert('Tarjeta Valida y usuario correcto');
-  }
+    }
+    else alert('No coinciden los datos');
+  } else alert('Tarjeta no Valida');
+
 };
