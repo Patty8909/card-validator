@@ -39,7 +39,7 @@ let algorithmtValidateCard = (cardNumber) => {
   }
   if (result % 10 === 0) {
     // return alert('Tarjeta válida');
-    validatenumCard = true;
+    tempnumCard = true;
     activeButton();
   } else {
     // return alert('Tarjeta inválida');
@@ -50,8 +50,10 @@ let algorithmtValidateCard = (cardNumber) => {
 /* Función cantidad de digitos */
 let countDigit = (input, length) => {
   let value = input.value;
-  if (value.length === length) return true;
-  else return false;
+  if (value.length > length) input.value = input.value.slice(0, length);
+  if (value.length === length) {
+    return true;
+  } else return false;
 };
 
 /* Función aceptar solo números */
@@ -64,26 +66,68 @@ let typeInputString = (input) => {
   input.value = input.value.replace(expLet, '');
 };
 
-// FUNCIONES PARA AÑO Y MES O UNA SOLA
+// FUNCIONES PARA AÑO Y MES
 /* Función validaciones fecha de expiración */
 let validateDateExpiration = (dateExp) => {
   typeInputNum(dateExp);
+  countDigit(dateExp, 7);
+  formatDateExp(dateExp);
+};
+
+let formatDateExp = (input) => {
+  if (input.value == 2) { input.value = `${input.value}/`; }
+};
+
+letValidateDateYear = (year) => {
+  const date = new Date;
+  year.value = year.value.replace(expNum, '');
+  let thisYear = date.getFullYear();
+  if (year.value >= thisYear && year.value <= thisYear + 5 && year.value.length === 4) {
+    validateYear = true;
+    year.setAttribute('class', 'success');
+  } else {
+    year.setAttribute('class', 'error');
+  }
+};
+
+letValidateDateMoth = (moth) => {
+  month.value = month.value.replace(expNum, '');
+  if (month.value > 0 && month.value < 13 && month.value.length === 2 && validateYear) {
+    validateMonth = true;
+    month.setAttribute('class', 'success');
+  } else {
+    month.setAttribute('class', 'error');
+  }
 };
 
 /* Función validaciones CVV */
 let validateCVV = (cvv) => {
-  countDigit(cvv, 3);
+  if (countDigit(cvv, 3)) {
+    tempCvv = true;
+    activeButton();
+  } else desactiveButton();
   typeInputNum(cvv);
+};
+
+/* Función cantidad de digitos */
+let countDigitName = (input, length) => {
+  let value = input.value;
+  if (value.length >= length) {
+    return true;
+  } else return false;
 };
 
 /* Función validaciones nombres */
 let validateName = (name) => {
   typeInputString(name);
-  countDigit(name, 5);
+  if (countDigitName(name, 5)) {
+    tempName = true;
+    activeButton();
+  } else desactiveButton();
 };
 /* Validar para habilitar boton */
 let activeButton = () => {
-  if (tempYear && tempCvv && tempName && tempnumCard && tempMonth) {
+  if (tempnumCard && tempCvv && tempName) {
     button.disabled = false;
   };
 };
@@ -96,6 +140,10 @@ let validateData = (numCard, cvv, name) => {
   numCardValue = parseInt(numCard.value);
   cvvValue = parseInt(cvv.value);
   nameValue = name.value;
-  let valdUser = data.filter((user) => user.number===numCardValue);
-  console.log(valdUser);
+  let valdUser = data.filter((user) => user.number === numCardValue);
+  if (valdUser.length) {
+    if (valdUser[0].cvv === cvv && valdUser[0].name === name) {
+      alert('Tarjeta Valida y usuario correcto');
+    } else alert('Tarjeta Valida y usuario correcto');
+  }
 };
