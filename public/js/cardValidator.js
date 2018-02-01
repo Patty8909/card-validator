@@ -1,40 +1,40 @@
-const expNum = /[^0-9]/g;
-const expLet = /[^a-zA-ZÑñáéíóúÁÉÍÓÚ\s]*$/g;
+'use strict';
 
-let tempNumCard = false;
-let tempExp = false;
-let tempYear = false;
-let tempMonth = false;
-let tempCvv = false;
-let tempName = false;
+var expNum = /[^0-9]/g;
+var expLet = /[^a-zA-ZÑñáéíóúÁÉÍÓÚ\s]*$/g;
+
+var tempNumCard = false;
+var tempExp = false;
+var tempYear = false;
+var tempMonth = false;
+var tempCvv = false;
+var tempName = false;
 
 /* Función validaciones número de tarjeta */
-let validateCardDetails = (cardNumber) => {
+var validateCardDetails = function validateCardDetails(cardNumber) {
   typeInputNum(cardNumber);
   if (countDigit(cardNumber, 16)) algorithmtValidateCard(cardNumber);
 };
 
 /* Función para validar número de tarjeta con algoritmo de Luhn*/
-let algorithmtValidateCard = (cardNumber) => {
-  let array = [];
-  let size = cardNumber.length;
-  let digit;
-  let result = 0;
-  for (let i = 0; i < size; i++) {
+var algorithmtValidateCard = function algorithmtValidateCard(cardNumber) {
+  var array = [];
+  var size = cardNumber.length;
+  var digit = void 0;
+  var result = 0;
+  for (var i = 0; i < size; i++) {
     array.push(parseInt(cardNumber[i]));
   }
   array.reverse();
 
-  for (let i = 0; i < size; i++) {
-    if (i % 2 !== 0) {
-      if (array[i] * 2 >= 10) {
-        let divider = parseInt(array[i] * 2 / 10);
-        let residue = array[i] * 2 % 10;
+  for (var _i = 0; _i < size; _i++) {
+    if (_i % 2 !== 0) {
+      if (array[_i] * 2 >= 10) {
+        var divider = parseInt(array[_i] * 2 / 10);
+        var residue = array[_i] * 2 % 10;
         digit = divider + residue;
-      } else
-        digit = array[i] * 2;
-    } else
-      digit = array[i];
+      } else digit = array[_i] * 2;
+    } else digit = array[_i];
     result += digit;
   }
   if (result % 10 === 0) {
@@ -48,8 +48,8 @@ let algorithmtValidateCard = (cardNumber) => {
 };
 
 /* Función cantidad de digitos */
-let countDigit = (input, length) => {
-  let value = input.value;
+var countDigit = function countDigit(input, length) {
+  var value = input.value;
   if (value.length > length) input.value = input.value.slice(0, length);
   if (value.length === length) {
     return true;
@@ -57,31 +57,33 @@ let countDigit = (input, length) => {
 };
 
 /* Función aceptar solo números */
-let typeInputNum = (input) => {
+var typeInputNum = function typeInputNum(input) {
   input.value = input.value.replace(expNum, '');
 };
 
 /* Función aceptar solo números */
-let typeInputString = (input) => {
+var typeInputString = function typeInputString(input) {
   input.value = input.value.replace(expLet, '');
 };
 
 // FUNCIONES PARA AÑO Y MES
 /* Función validaciones fecha de expiración */
-let validateDateExpiration = (dateExp) => {
+var validateDateExpiration = function validateDateExpiration(dateExp) {
   typeInputNum(dateExp);
   countDigit(dateExp, 7);
   formatDateExp(dateExp);
 };
 
-let formatDateExp = (input) => {
-  if (input.value == 2) { input.value = `${input.value}/`; }
+var formatDateExp = function formatDateExp(input) {
+  if (input.value == 2) {
+    input.value = input.value + '/';
+  }
 };
 
-letValidateDateYear = (year) => {
-  const date = new Date;
+letValidateDateYear = function letValidateDateYear(year) {
+  var date = new Date();
   year.value = year.value.replace(expNum, '');
-  let thisYear = date.getFullYear();
+  var thisYear = date.getFullYear();
   if (year.value >= thisYear && year.value <= thisYear + 5 && year.value.length === 4) {
     tempYear = true;
     year.setAttribute('class', 'success');
@@ -90,8 +92,8 @@ letValidateDateYear = (year) => {
   }
 };
 
-letValidateDateMoth = (moth) => {
-  
+letValidateDateMoth = function letValidateDateMoth(moth) {
+
   month.value = month.value.replace(expNum, '');
   if (month.value > 0 && month.value < 13 && month.value.length === 2 && tempYear) {
     tempMonth = true;
@@ -99,11 +101,10 @@ letValidateDateMoth = (moth) => {
   } else {
     month.setAttribute('class', 'error');
   }
-  
 };
 
 /* Función validaciones CVV */
-let validateCVV = (cvv) => {
+var validateCVV = function validateCVV(cvv) {
   if (countDigit(cvv, 3)) {
     tempCvv = true;
     activeButton();
@@ -112,15 +113,15 @@ let validateCVV = (cvv) => {
 };
 
 /* Función cantidad de digitos */
-let countDigitName = (input, length) => {
-  let value = input.value;
+var countDigitName = function countDigitName(input, length) {
+  var value = input.value;
   if (value.length >= length) {
     return true;
   } else return false;
 };
 
 /* Función validaciones nombres */
-let validateName = (name) => {
+var validateName = function validateName(name) {
   typeInputString(name);
   if (countDigitName(name, 5)) {
     tempName = true;
@@ -128,30 +129,29 @@ let validateName = (name) => {
   } else desactiveButton();
 };
 /* Validar para habilitar boton */
-let activeButton = () => {
+var activeButton = function activeButton() {
   if (tempnumCard && tempCvv && tempName) {
     // button.disabled = false;
   };
 };
 /* Validar para no habilitar boton */
-let desactiveButton = () => {
+var desactiveButton = function desactiveButton() {
   // button.disabled = true;
 };
 
-let validateData = (numCard, cvv, name) => {
+var validateData = function validateData(numCard, cvv, name) {
   numCardValue = parseInt(numCard.value);
   cvvValue = parseInt(cvv.value);
   nameValue = name.value;
-  let valdUser = data.filter((user) => user.number === numCardValue);
+  var valdUser = data.filter(function (user) {
+    return user.number === numCardValue;
+  });
   if (valdUser.length) {
     if (valdUser[0].cvv === cvvValue && valdUser[0].name === nameValue) {
       alert('Tarjeta Valida y usuario correcto');
-    }
-    else alert('No coinciden los datos');
+    } else alert('No coinciden los datos');
   } else alert('Tarjeta no Valida');
   cleanInput();
 };
 
-let cleanInput = () => {
-  
-}
+var cleanInput = function cleanInput() {};
