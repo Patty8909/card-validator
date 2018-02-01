@@ -92,6 +92,10 @@ let desactiveButton = () => {
   button.disabled = true;
 };
 
-let validateData = () => {
-  
-}
+let validateData = (numCard, cvv, name) => {
+  numCardValue = parseInt(numCard.value);
+  cvvValue = parseInt(cvv.value);
+  nameValue = name.value;
+  let valdUser = data.filter((user) => user.number===numCardValue);
+  console.log(valdUser);
+};
