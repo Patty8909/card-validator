@@ -147,11 +147,9 @@ let validateData = (numCard, cvv, name, year, month ) => {
   numCardValue = parseInt(numCard.value);
   cvvValue = parseInt(cvv.value);
   nameValue = name.value;
-  yearValue = parseInt(year.value);
-  monthValue = parseInt(month.value);
   let valdUser = data.filter((user) => user.number === numCardValue);
   if (valdUser.length) {
-    if (valdUser[0].cvv === cvvValue && valdUser[0].name === nameValue && valdUser[0].numCard === numCardValue && valdUser[0].year === yearValue && valdUser[0].month === monthValue) {
+    if (valdUser[0].cvv === cvvValue && valdUser[0].name === nameValue) {
       alert('Tarjeta Valida y usuario correcto');
     }
     else alert('No coinciden los datos');
