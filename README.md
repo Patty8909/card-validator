@@ -15,7 +15,7 @@ El plugin debe recibir una referencia a un elemento del DOM que contenga
 * `name`: Nombre completo como aparece en la tarjeta
 
 ## Ejemplo
-
+<p></p>
 ```html
 <form>
   <div class="form-group">
