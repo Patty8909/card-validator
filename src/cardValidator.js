@@ -78,11 +78,11 @@ let formatDateExp = (input) => {
   if (input.value == 2) { input.value = `${input.value}/`; }
 };
 
-letValidateDateYear = (year) => {
+let validateDateYear = (year) => {
   const date = new Date;
   year.value = year.value.replace(expNum, '');
   let thisYear = date.getFullYear();
-  if (year.value >= thisYear && year.value <= thisYear + 5 && year.value.length === 4) {
+  if (countDigit(year, 4) && year.value >= thisYear && year.value <= thisYear + 5) {
     tempYear = true;
     year.setAttribute('class', 'success');
   } else {
@@ -90,13 +90,18 @@ letValidateDateYear = (year) => {
   }
 };
 
-letValidateDateMoth = (moth) => {
-  
+let validateDateMonth = (month) => {
+  const date = new Date;
+  let thisMonth = date.getMonth();
+  let thisYear = date.getFullYear();
+  console.log(thisMonth);
   month.value = month.value.replace(expNum, '');
-  if (month.value > 0 && month.value < 13 && month.value.length === 2 && tempYear) {
+  if (countDigit(month, 2) && month.value > 0 && month.value < 13) {
+    console.log('mes correcto');
     tempMonth = true;
     month.setAttribute('class', 'success');
   } else {
+    console.log('mes incorrecto');
     month.setAttribute('class', 'error');
   }
   
@@ -138,13 +143,15 @@ let desactiveButton = () => {
   // button.disabled = true;
 };
 
-let validateData = (numCard, cvv, name) => {
+let validateData = (numCard, cvv, name, year, month ) => {
   numCardValue = parseInt(numCard.value);
   cvvValue = parseInt(cvv.value);
   nameValue = name.value;
+  yearValue = parseInt(year.value);
+  monthValue = parseInt(month.value);
   let valdUser = data.filter((user) => user.number === numCardValue);
   if (valdUser.length) {
-    if (valdUser[0].cvv === cvvValue && valdUser[0].name === nameValue) {
+    if (valdUser[0].cvv === cvvValue && valdUser[0].name === nameValue && valdUser[0].numCard === numCardValue && valdUser[0].year === yearValue && valdUser[0].month === monthValue) {
       alert('Tarjeta Valida y usuario correcto');
     }
     else alert('No coinciden los datos');

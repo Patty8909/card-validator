@@ -19,12 +19,12 @@ window.addEventListener('load', () => {
 
   // Validar año de expiración long 4, sólo num, máx 5 años posteriores
   year.addEventListener('input', () => {
-    letValidateDateYear(year);
+    validateDateYear(year);
   });
 
   // Validar mes de expiración long 2, sólo num
   month.addEventListener('input', () => {
-    letValidateDateMoth(month);
+    validateDateMonth(month);
   });
 
   cvv.addEventListener('input', () => {
@@ -37,7 +37,7 @@ window.addEventListener('load', () => {
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-    validateData(numCard, cvv, name);
+    validateData(numCard, cvv, name, year, month);
   });
 
 });
