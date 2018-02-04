@@ -6,51 +6,6 @@
 
 ***
 
-El plugin debe recibir una referencia a un elemento del DOM que contenga
-`<input>`s con los siguientes nombres (atributo `name`):
-
-* `cn` (Card Number): El número de la tarjeta de crédito
-* `exp` (Expiry Date): Fecha de expiración
-* `cvv` (Card Verification Value): Código de validación de 3 dígitos
-* `name`: Nombre completo como aparece en la tarjeta
-
-## Ejemplo
-
-```html
-<form>
-  <div class="form-group">
-    <label for="cn">Número de tarjeta</label>
-    <input id="cn" name="cn" />
-  </div>
-  <div class="form-group">
-    <label for="exp">Fecha de vencimiento</label>
-    <input id="exp" name="exp" />
-  </div>
-  <div class="form-group">
-    <label for="cvv">CVV</label>
-    <input id="cvv" name="cvv" />
-  </div>
-  <div class="form-group">
-    <label for="name">Nombre completo</label>
-    <input id="name" name="name" />
-  </div>
-  <input type="submit" value="Pagar" />
-</form>
-```
-
-```js
-const form = document.querySelector('form');
-
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
-  if (validateCardDetails(form)) {
-    console.log('datos válido... enviar...');
-  } else {
-    console.log('datos inválidos');
-  }
-});
-```
-
 ## Implementación de libreria
 
 #### Sketch
@@ -108,6 +63,19 @@ CardValidator permite validar tarjetas de crédito con las siguientes caracterí
   <input id="year" /> <!-- Para el año de expiración -->
   <input id="cvv" /> <!-- Para el código de verificación -->
   <input id="name" /><!-- Para el nombre completo -->
+```
+
+### Uso
+
+Agregar el evento `submit` al formulario mediante el siguiente código:
+
+```js
+const form = document.querySelector('form');
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    validateData(numCard, cvv, name, year, month);
+  });
 ```
 
 ## Herramientas
