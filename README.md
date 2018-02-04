@@ -96,6 +96,20 @@ CardValidator permite validar tarjetas de crédito con las siguientes caracterí
 + Código de verificación: longitud de 3 dígitos, en números.
 + Nombre completo: longitud mínima de 5 caracteres.
 
+### Instalación
+
+1. Descargar o clonar este repositorio.
+2. Esta librería está disponible en javascript 5 y ES6, así que si se elige la primera opción, agregar el archivo `cardValidator.js` que se encuentra dentro de `public/js`. En caso que se desee utilizar código escrito en ES6, agregar el archivo `cardValidator.js` que se encuentra dentro de `src`.
+3. Dentro del formulario para validar la tarjeta de crédito, incluír en cada etiqueta `input` los siguientes `id`:
+
+```html
+  <input id="cn" /> <!-- Para el número de tarjeta -->
+  <input id="month" /> <!-- Para el mes de expiración -->
+  <input id="year" /> <!-- Para el año de expiración -->
+  <input id="cvv" /> <!-- Para el código de verificación -->
+  <input id="name" /><!-- Para el nombre completo -->
+```
+
 ## Herramientas
 
 `babel` `ecmascript 6` `html5` `bootstrap 3`
