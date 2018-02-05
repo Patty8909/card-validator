@@ -1,5 +1,6 @@
 const expNum = /[^0-9]/g;
 const expLet = /[^a-zA-ZÑñáéíóúÁÉÍÓÚ\s]*$/g;
+const expYear = /[^[20][1][8,9]]|(^20[2][0-2])/g;
 
 let tempNumCard = false;
 let tempExp = false;
@@ -79,32 +80,36 @@ let formatDateExp = (input) => {
 };
 
 let validateDateYear = (year) => {
-  const date = new Date;
-  year.value = year.value.replace(expNum, '');
-  let thisYear = date.getFullYear();
-  if (countDigit(year, 4) && year.value >= thisYear && year.value <= thisYear + 5) {
-    tempYear = true;
-    year.setAttribute('class', 'success');
-  } else {
-    year.setAttribute('class', 'error');
-  }
+  typeInputNum(year);
+  if (countDigit(year, 4)) {
+    year.value = year.value.replace(expNum, '');
+    const date = new Date;
+    let thisYear = date.getFullYear();
+    if (countDigit(year, 4) && year.value >= thisYear && year.value <= thisYear + 5) {
+      tempYear = true;
+      year.setAttribute('class', 'success');
+    } else {
+      year.setAttribute('class', 'error');
+    }
+  }   
 };
 
 let validateDateMonth = (month) => {
-  const date = new Date;
-  let thisMonth = date.getMonth();
-  let thisYear = date.getFullYear();
-  console.log(thisMonth);
-  month.value = month.value.replace(expNum, '');
-  if (countDigit(month, 2) && month.value > 0 && month.value < 13) {
-    console.log('mes correcto');
-    tempMonth = true;
-    month.setAttribute('class', 'success');
-  } else {
-    console.log('mes incorrecto');
-    month.setAttribute('class', 'error');
+  typeInputNum(month);
+  if (countDigit(month, 4)) {
+    const date = new Date;
+    let thisMonth = date.getMonth();
+    let thisYear = date.getFullYear();
+    console.log(thisMonth);
+    if (countDigit(month, 2) && month.value > 0 && month.value < 13) {
+      console.log('mes correcto');
+      tempMonth = true;
+      month.setAttribute('class', 'success');
+    } else {
+      console.log('mes incorrecto');
+      month.setAttribute('class', 'error');
+    }
   }
-  
 };
 
 /* Función validaciones CVV */
@@ -143,20 +148,25 @@ let desactiveButton = () => {
   // button.disabled = true;
 };
 
-let validateData = (numCard, cvv, name, year, month ) => {
+let validateData = (numCard, cvv, name, year, month) => {
   numCardValue = parseInt(numCard.value);
+  monthValue = parseInt(month.value);
+  yearValue = parseInt(year.value);
   cvvValue = parseInt(cvv.value);
   nameValue = name.value;
   let valdUser = data.filter((user) => user.number === numCardValue);
   if (valdUser.length) {
-    if (valdUser[0].cvv === cvvValue && valdUser[0].name === nameValue) {
+    if (valdUser[0].month === monthValue && valdUser[0].year === yearValue && valdUser[0].cvv === cvvValue && valdUser[0].name === nameValue) {
       alert('Tarjeta Valida y usuario correcto');
-    }
-    else alert('No coinciden los datos');
+    } else alert('No coinciden los datos');
   } else alert('Tarjeta no Valida');
-  cleanInput();
+  cleanInput(numCard, cvv, name, year, month);
 };
 
-let cleanInput = () => {
-  
+let cleanInput = (numCard, cvv, name, year, month) => {
+  numCard.value = '';
+  cvv.value = '';
+  year.value = '';
+  month.value = '';
+  name.value = '';
 }
