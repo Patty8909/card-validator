@@ -22,10 +22,30 @@ body {
     text-align: center;
 }
 .style-footer {
-    background-color: #F8F8F8;
-    border: 1px solid #E7E7E7;
+    background-color: #3A3A3C;
+    border: 1px solid #3A3A3C;
     height: 70px;
 }
 .margin {
     margin-top: 2%;
+}
+.color-tc {
+    color: rgb(51, 51, 223);
+    display: inline;
+}
+/*------------navbar------------*/
+.nav-color {
+    background-color: #3A3A3C;
+  
+}
+.color-text {
+    color: white;
+}
+.color-text h4 {
+    color: white;
+}
+.box-color {
+    background-color: #3A3A3C;
+    border: none;
+    border-radius: 10px;
 }

@@ -12,10 +12,10 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-default navbar-fixed-top">
+  <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
     <div class="container">
       <div class="navbar-header">
-        <a class="navbar-brand" href="#">CardValidator</a>
+        <a class="navbar-brand " href="#">CardValidator</a>
       </div>
       <ul class="nav navbar-nav navbar-right">
         <li>
@@ -28,7 +28,7 @@
     <div class="row">
       <div>
         <h1 class="text-center">CardValidator es una libreria JS</h1>
-        <h2 class="text-center">Comprueba si tarjeta de crédito es válida</h2>
+        <h2 class="text-center">Comprueba si una <span class="color-tc"> Tarjeta de Crédito</span> es válida</h2>
       </div>
       <br>
       <div class="col-md-6">
@@ -90,34 +90,34 @@
 
       <div class="row">
         <div class="col-sm-6 col-md-3">
-          <div class="thumbnail">
+          <div class="thumbnail box-color">
             <div class="caption">
-              <h3>Número de tarjeta</h3>
-              <p>Valida mediante el algoritmo de Luhn tarjetas de 16 números.</p>
+              <h3 class="color-text">Número de tarjeta</h3>
+              <p class="color-text">Valida mediante el algoritmo de Luhn tarjetas de 16 números.</p>
             </div>
           </div>
         </div>
         <div class="col-sm-6 col-md-3">
-          <div class="thumbnail">
+          <div class="thumbnail box-color">
             <div class="caption">
-              <h3>Fecha de vencimiento</h3>
-              <p>Valida años futuros a partir de la fecha actual con máximo 5 años posteriores.</p>
+              <h3 class="color-text">Fecha de vencimiento</h3>
+              <p class="color-text">Valida años futuros a partir de la fecha actual con máximo 5 años posteriores.</p>
             </div>
           </div>
         </div>
         <div class="col-sm-6 col-md-3">
-          <div class="thumbnail">
+          <div class="thumbnail box-color">
             <div class="caption">
-              <h3>Código de verificación</h3>
-              <p>Valida cvv de tres dígitos.</p>
+              <h3 class="color-text">Código de verificación</h3>
+              <p class="color-text">Valida cvv de tres dígitos.</p>
             </div>
           </div>
         </div>
         <div class="col-sm-6 col-md-3">
-          <div class="thumbnail">
+          <div class="thumbnail box-color">
             <div class="caption">
-              <h3>Nombre completo</h3>
-              <p>Valida un mínimo de cinco caracteres, sólo letras.</p>
+              <h3 class="color-text">Nombre completo</h3>
+              <p class="color-text">Valida un mínimo de cinco caracteres, sólo letras.</p>
             </div>
           </div>
         </div>
@@ -156,54 +156,7 @@
         </div>
       </div>
   </div>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-12 text-align">
-        <h2>Forma de uso</h2>
-      </div>
-    </div>
-  </div>
-  <br>
-  <section class="container">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Número de tarjeta</h3>
-      </div>
-      <div class="panel-body">
-        let validateCardDetails = (cardNumber)
-      </div>
-    </div>
-  </section>
-  <section class="container">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Fecha de vencimiento</h3>
-      </div>
-      <div class="panel-body">
-        let validateDateExpiration = (dateExp)
-      </div>
-    </div>
-  </section>
-  <section class="container">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Código de verificación</h3>
-      </div>
-      <div class="panel-body">
-        let validateCVV = (cvv)
-      </div>
-    </div>
-  </section>
-  <section class="container">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Nombre completo</h3>
-      </div>
-      <div class="panel-body">
-        let validateName = (name)
-      </div>
-    </div>
-  </section>
+ 
   <div class="container">
     <div class="row">
       <div class="col-md-12 text-align">
@@ -212,8 +165,8 @@
     </div>
     <div class="row">
       <div class="col-sm-6 col-md-4">
-        <div class="thumbnail">
-          <div class="caption">
+        <div class="thumbnail box-color">
+          <div class="caption color-text">
             <h4 class="text-center">Tarjeta Válida: 4395931516507069</h4> 
             <h4 class="text-center">Año: 2020 </h4>
             <h4 class="text-center">Mes: 12 </h4>
@@ -223,8 +176,8 @@
         </div>
       </div>
       <div class="col-sm-6 col-md-4">
-        <div class="thumbnail">
-          <div class="caption">
+        <div class="thumbnail box-color">
+          <div class="caption color-text">
             <h4 class="text-center">Tarjeta Válida: 6489908145200466</h4> 
             <h4 class="text-center">Año: 2021 </h4>
             <h4 class="text-center">Mes: 02 </h4>
@@ -234,8 +187,8 @@
         </div>
       </div>
       <div class="col-sm-6 col-md-4">
-        <div class="thumbnail">
-          <div class="caption">
+        <div class="thumbnail box-color">
+          <div class="caption color-text">
             <h4 class="text-center">Tarjeta Válida: 5541390172157596</h4> 
             <h4 class="text-center">Año: 2022 </h4>
             <h4 class="text-center">Mes: 08 </h4>
@@ -252,7 +205,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12 text-align margin">
-          <p>&copy; CardValidator is freely distributable under the terms of the MIT license.</p>
+          <p class="color-text">&copy; CardValidator is freely distributable under the terms of the MIT license.</p>
         </div>
       </div>
     </div>
