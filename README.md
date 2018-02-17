@@ -1,10 +1,10 @@
 # Valida datos de tarjetas de crédito
 
-* **Track:** _Common Core_
-* **Curso:** _JS Deep Dive: Crea tu propia librería usando JavaScript_
-* **Unidad:** _Producto final_
+## Descripción
 
-***
+CardValidator valida los datos de las tarjetas de crédito. El número de tarjeta es validado según el algoritmo de Luhn, además valida la fecha de vencimiento, el Código de verificación (CVV) de tres dígitos y el nombre completo.
+
+![cardvalidator](https://user-images.githubusercontent.com/32307161/36345964-fa19c1de-1402-11e8-9a9e-221412fee8e4.png)
 
 ## Implementación de libreria
 
